@@ -1,0 +1,27 @@
+# --- OS & IDE Junk ---
+.DS_Store
+.vscode/
+.idea/
+
+# --- Go Binaries ---
+# Ignore the actual compiled executable
+main
+server
+*.exe
+*.test
+
+# --- Tools ---
+# DEFINITELY ignore this (it's the 80MB binary you downloaded)
+tailwindcss
+# Ignore the "Air" temp directory if you use it later
+tmp/
+
+# --- Secrets ---
+.env
+
+# --- The "Generated Code" Decision ---
+# For a personal project, it is usually better to COMMIT these files
+# so your deployment server doesn't need to install Templ/Tailwind.
+# If you wanted a "Pure" repo, you would uncomment these lines:
+# static/css/output.css
+# **/*_templ.go
