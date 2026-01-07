@@ -1,12 +1,67 @@
 package home
 
-import "github.com/alejandrobyrne/website/views/layout"
+import (
+	"github.com/alejandrobyrne/website/views/layout"
+	"github.com/alejandrobyrne/website/views/components"
+	"github.com/alejandrobyrne/website/internal/substack"
+	"github.com/alejandrobyrne/website/internal/projects_store"
+)
 
-templ Index() {
-	@layout.Base("Home | My Portfolio") {
-		<div class="text-center py-20">
-			<h1 class="text-5xl font-bold mb-4">CS Senior & Renaissance Man</h1>
-			<p class="text-xl text-gray-600">Building systems with Go, Templ, and Azure.</p>
-		</div>
+type HomeData struct {
+    RecentPosts      []substack.Post
+    FeaturedProjects []projects_store.Project
+}
+
+templ Index(data HomeData) {
+	@layout.Base("Home | Alejandro Byrne") {
+		
+        // SECTION 1: HERO
+		<section class="mb-12 py-10 border-b border-gray-200">
+			<h1 class="text-5xl font-bold mb-6 text-gray-900">Hello, I'm Alejandro.</h1>
+			<div class="text-xl text-gray-600 max-w-2xl leading-relaxed space-y-4">
+				<p>
+                    I am a CS Senior and a "Renaissance Man" based in Texas.
+                </p>
+                <p>
+                    I build high-performance systems using <strong>Go, Azure, and Post-React</strong> web technologies. 
+                </p>
+			</div>
+            <div class="mt-8 flex gap-4">
+                <a href="/projects" class="bg-black text-white px-6 py-2 rounded-lg font-bold hover:bg-gray-800 transition">
+                    View My Work
+                </a>
+            </div>
+		</section>
+
+        // SECTION 2: BENTO DASHBOARD
+        <div class="grid md:grid-cols-2 gap-8">
+            
+            // Left: Substack Feed
+            <div>
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Recent Writing</h2>
+                    <a href="/substack" class="text-blue-600 hover:underline text-sm font-medium">View All &rarr;</a>
+                </div>
+                <div class="space-y-4">
+                    for _, post := range data.RecentPosts {
+                        @components.PostCard(post)
+                    }
+                </div>
+            </div>
+
+            // Right: Featured Projects
+            <div>
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Featured Projects</h2>
+                    <a href="/projects" class="text-blue-600 hover:underline text-sm font-medium">View Gallery &rarr;</a>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    for _, proj := range data.FeaturedProjects {
+                        @components.ProjectCard(proj)
+                    }
+                </div>
+            </div>
+
+        </div>
 	}
 }

@@ -1,0 +1,39 @@
+package components
+
+import (
+    "github.com/alejandrobyrne/website/internal/substack"
+    "github.com/alejandrobyrne/website/internal/projects_store"
+)
+
+// 1. A Single Project Card (Used on Home & Projects Page)
+templ ProjectCard(p projects_store.Project) {
+    <div class="border rounded-xl p-5 bg-white shadow-sm hover:shadow-md transition-all h-full flex flex-col justify-between">
+        <div>
+            <div class="flex justify-between items-start mb-2">
+                <h3 class="font-bold text-lg">{ p.Title }</h3>
+                <span class="text-xs bg-gray-100 text-gray-500 px-2 py-1 rounded">ID: { p.ID }</span>
+            </div>
+            <p class="text-sm text-gray-600 line-clamp-3 mb-3">{ p.Description }</p>
+            
+            <div class="flex flex-wrap gap-1 mb-3">
+                for _, tech := range p.TechStack {
+                    <span class="px-2 py-0.5 bg-blue-50 text-blue-600 text-[10px] rounded-full font-medium">{ tech }</span>
+                }
+            </div>
+        </div>
+        
+        <a href={ templ.URL(p.Link) } target="_blank" class="text-blue-600 text-sm font-medium hover:underline mt-2 inline-block">
+            View Code &rarr;
+        </a>
+    </div>
+}
+
+// 2. A Single Substack Card (Used on Home Page)
+templ PostCard(p substack.Post) {
+    <a href={ templ.URL(p.Link) } target="_blank" class="block group">
+        <div class="border rounded-xl p-4 bg-white shadow-sm hover:shadow-md hover:border-blue-200 transition-all">
+            <h3 class="font-bold text-md group-hover:text-blue-600 transition-colors line-clamp-1">{ p.Title }</h3>
+            <p class="text-xs text-gray-400 mt-1">{ p.Date }</p>
+        </div>
+    </a>
+}

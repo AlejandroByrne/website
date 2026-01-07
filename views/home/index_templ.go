@@ -8,9 +8,19 @@ package home
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-import "github.com/alejandrobyrne/website/views/layout"
+import (
+	"github.com/alejandrobyrne/website/internal/projects_store"
+	"github.com/alejandrobyrne/website/internal/substack"
+	"github.com/alejandrobyrne/website/views/components"
+	"github.com/alejandrobyrne/website/views/layout"
+)
 
-func Index() templ.Component {
+type HomeData struct {
+	RecentPosts      []substack.Post
+	FeaturedProjects []projects_store.Project
+}
+
+func Index(data HomeData) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -43,13 +53,33 @@ func Index() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"text-center py-20\"><h1 class=\"text-5xl font-bold mb-4\">CS Senior & Renaissance Man</h1><p class=\"text-xl text-gray-600\">Building systems with Go, Templ, and Azure.</p></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <section class=\"mb-12 py-10 border-b border-gray-200\"><h1 class=\"text-5xl font-bold mb-6 text-gray-900\">Hello, I'm Alejandro.</h1><div class=\"text-xl text-gray-600 max-w-2xl leading-relaxed space-y-4\"><p>I am a CS Senior and a \"Renaissance Man\" based in Texas.</p><p>I build high-performance systems using <strong>Go, Azure, and Post-React</strong> web technologies. </p></div><div class=\"mt-8 flex gap-4\"><a href=\"/projects\" class=\"bg-black text-white px-6 py-2 rounded-lg font-bold hover:bg-gray-800 transition\">View My Work</a></div></section> <div class=\"grid md:grid-cols-2 gap-8\"><div><div class=\"flex justify-between items-center mb-6\"><h2 class=\"text-2xl font-bold text-gray-800\">Recent Writing</h2><a href=\"/substack\" class=\"text-blue-600 hover:underline text-sm font-medium\">View All &rarr;</a></div><div class=\"space-y-4\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			for _, post := range data.RecentPosts {
+				templ_7745c5c3_Err = components.PostCard(post).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div></div><div><div class=\"flex justify-between items-center mb-6\"><h2 class=\"text-2xl font-bold text-gray-800\">Featured Projects</h2><a href=\"/projects\" class=\"text-blue-600 hover:underline text-sm font-medium\">View Gallery &rarr;</a></div><div class=\"grid grid-cols-1 gap-4\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			for _, proj := range data.FeaturedProjects {
+				templ_7745c5c3_Err = components.ProjectCard(proj).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = layout.Base("Home | My Portfolio").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = layout.Base("Home | Alejandro Byrne").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
