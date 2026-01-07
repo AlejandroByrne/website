@@ -1,0 +1,11 @@
+.git
+.vscode
+.DS_Store
+tmp
+run.sh
+README.md
+Dockerfile
+Makefile
+# Ignore local binaries
+tailwindcss
+main
