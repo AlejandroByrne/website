@@ -1,7 +1,7 @@
 # ==========================================
 # STAGE 1: The Builder (Compiling the App)
 # ==========================================
-FROM golang:1.26-alpine AS builder
+FROM golang:alpine AS builder
 
 # 1. Install required system tools
 # 'curl' is needed to download Tailwind

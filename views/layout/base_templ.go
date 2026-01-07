@@ -42,7 +42,7 @@ func Base(title string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</title><link href=\"/static/css/output.css\" rel=\"stylesheet\"><script src=\"https://unpkg.com/htmx.org@1.9.10\"></script></head><body class=\"bg-gray-50 text-gray-900 font-sans antialiased\"><nav class=\"bg-white border-b border-gray-200 p-4\"><div class=\"max-w-4xl mx-auto flex justify-between items-center\"><div class=\"font-bold text-xl\">My Portfolio</div><div class=\"space-x-4\"><a href=\"/\" class=\"hover:text-blue-600\">Home</a> <a href=\"/projects\" class=\"hover:text-blue-600\">Projects</a> <a href=\"/about\" class=\"hover:text-blue-600\">About</a></div></div></nav><main class=\"max-w-4xl mx-auto p-4 mt-8\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</title><link href=\"/static/css/output.css\" rel=\"stylesheet\"><script src=\"https://unpkg.com/htmx.org@1.9.10\"></script><script defer src=\"https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js\"></script></head><body class=\"bg-gray-50 text-gray-900 font-sans antialiased\"><nav class=\"bg-white border-b border-gray-200 p-4\"><div class=\"max-w-4xl mx-auto flex justify-between items-center\"><div class=\"font-bold text-xl\">My Portfolio</div><div class=\"space-x-4\"><a href=\"/\" class=\"hover:text-blue-600\">Home</a> <a href=\"/projects\" class=\"hover:text-blue-600\">Projects</a> <a href=\"/about\" class=\"hover:text-blue-600\">About</a></div></div></nav><main class=\"max-w-4xl mx-auto p-4 mt-8\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

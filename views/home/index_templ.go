@@ -53,7 +53,22 @@ func Index(data HomeData) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <section class=\"mb-12 py-10 border-b border-gray-200\"><h1 class=\"text-5xl font-bold mb-6 text-gray-900\">Hello, I'm Alejandro.</h1><div class=\"text-xl text-gray-600 max-w-2xl leading-relaxed space-y-4\"><p>I am a CS Senior and a \"Renaissance Man\" based in Texas.</p><p>I build high-performance systems using <strong>Go, Azure, and Post-React</strong> web technologies. </p></div><div class=\"mt-8 flex gap-4\"><a href=\"/projects\" class=\"bg-black text-white px-6 py-2 rounded-lg font-bold hover:bg-gray-800 transition\">View My Work</a></div></section> <div class=\"grid md:grid-cols-2 gap-8\"><div><div class=\"flex justify-between items-center mb-6\"><h2 class=\"text-2xl font-bold text-gray-800\">Recent Writing</h2><a href=\"/substack\" class=\"text-blue-600 hover:underline text-sm font-medium\">View All &rarr;</a></div><div class=\"space-y-4\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <section class=\"mb-12 py-10 border-b border-gray-200\"><h1 class=\"text-5xl font-bold mb-6 text-gray-900\">Hello, I'm Alejandro.</h1><div class=\"text-xl text-gray-600 max-w-2xl leading-relaxed space-y-4\"><p>I am a CS Senior and a \"Renaissance Man\" based in Texas.</p><p>I build high-performance systems using <strong>Go, Azure, and Post-React</strong> web technologies. </p></div><div class=\"mt-8 flex gap-4\"><a href=\"/projects\" class=\"bg-black text-white px-6 py-2 rounded-lg font-bold hover:bg-gray-800 transition\">View My Work</a></div></section> <div class=\"mb-16\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = components.Slideshow([]string{
+				"donkeys.jpg",
+				"tinco_peru.jpg",
+				"colorado_bend_state_park.jpg",
+				"bike_in_car.jpg",
+				"1fc.jpg",
+				"epoch_north_loop.jpg",
+			}).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<p class=\"text-center text-sm text-gray-500 mt-4 italic\">Snapshots from my recent travels and projects.</p></div> <div class=\"grid md:grid-cols-2 gap-8\"><div><div class=\"flex justify-between items-center mb-6\"><h2 class=\"text-2xl font-bold text-gray-800\">Recent Writing</h2><a href=\"/substack\" class=\"text-blue-600 hover:underline text-sm font-medium\">View All &rarr;</a></div><div class=\"space-y-4\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -63,7 +78,7 @@ func Index(data HomeData) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div></div><div><div class=\"flex justify-between items-center mb-6\"><h2 class=\"text-2xl font-bold text-gray-800\">Featured Projects</h2><a href=\"/projects\" class=\"text-blue-600 hover:underline text-sm font-medium\">View Gallery &rarr;</a></div><div class=\"grid grid-cols-1 gap-4\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div></div><div><div class=\"flex justify-between items-center mb-6\"><h2 class=\"text-2xl font-bold text-gray-800\">Featured Projects</h2><a href=\"/projects\" class=\"text-blue-600 hover:underline text-sm font-medium\">View Gallery &rarr;</a></div><div class=\"grid grid-cols-1 gap-4\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -73,7 +88,7 @@ func Index(data HomeData) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div></div></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

@@ -33,6 +33,21 @@ templ Index(data HomeData) {
             </div>
 		</section>
 
+        // SLIDESHOW SECTION
+        <div class="mb-16">
+            @components.Slideshow([]string{
+                "donkeys.jpg", 
+                "tinco_peru.jpg", 
+                "colorado_bend_state_park.jpg",
+                "bike_in_car.jpg",
+                "1fc.jpg",
+                "epoch_north_loop.jpg",
+            })
+            <p class="text-center text-sm text-gray-500 mt-4 italic">
+                Snapshots from my recent travels and projects.
+            </p>
+        </div>
+
         // SECTION 2: BENTO DASHBOARD
         <div class="grid md:grid-cols-2 gap-8">
             
