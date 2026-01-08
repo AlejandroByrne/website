@@ -16,36 +16,33 @@ templ Index(data HomeData) {
 	@layout.Base("Home | Alejandro Byrne") {
 		
         // SECTION 1: HERO
-		<section class="mb-12 py-10 border-b border-gray-200">
-			<h1 class="text-5xl font-bold mb-6 text-gray-900">Hello, I'm Alejandro.</h1>
-			<div class="text-xl text-gray-600 max-w-2xl leading-relaxed space-y-4">
+		<section class="mb-12 py-10 border-b-2 border-black">
+			<h1 class="text-3xl font-bold mb-6 uppercase tracking-widest">Alejandro Byrne</h1>
+			<div class="text-lg max-w-2xl leading-relaxed space-y-4">
 				<p>
-                    I am a CS Senior and a "Renaissance Man" based in Texas.
+                    CS Senior. Texas based.
                 </p>
                 <p>
-                    I build high-performance systems using <strong>Go, Azure, and Post-React</strong> web technologies. 
+                    Building high-performance systems with <strong>Go, Azure, and Post-React</strong> technologies. 
                 </p>
 			</div>
             <div class="mt-8 flex gap-4">
-                <a href="/projects" class="bg-black text-white px-6 py-2 rounded-lg font-bold hover:bg-gray-800 transition">
+                <a href="/projects" class="border-2 border-black px-6 py-2 font-bold hover:bg-black hover:text-white transition-colors duration-0 uppercase text-sm">
                     View My Work
                 </a>
             </div>
 		</section>
 
         // SLIDESHOW SECTION
-        <div class="mb-16">
-            @components.Slideshow([]string{
-                "donkeys.jpg", 
-                "tinco_peru.jpg", 
-                "colorado_bend_state_park.jpg",
-                "bike_in_car.jpg",
-                "1fc.jpg",
-                "epoch_north_loop.jpg",
+        <div class="mb-16 border-b-2 border-black pb-8">
+            @components.Slideshow([]components.Slide{
+                {Src: "donkeys.jpg", Caption: "Grazing donkeys in the highlands of Northern Peru."},
+                {Src: "tinco_peru.jpg", Caption: "Village of Tinco, Peru."},
+                {Src: "colorado_bend_state_park.jpg", Caption: "Hiking trails at Colorado Bend State Park."},
+                {Src: "bike_in_car.jpg", Caption: "Transit and transport: Bike loaded for the journey."},
+                {Src: "1fc.jpg", Caption: "First floor commons (1FC) of the Helios Co-op."},
+                {Src: "epoch_north_loop.jpg", Caption: "Epoch Coffee, North Loop, Austin. Many hours spent here."},
             })
-            <p class="text-center text-sm text-gray-500 mt-4 italic">
-                Snapshots from my recent travels and projects.
-            </p>
         </div>
 
         // SECTION 2: BENTO DASHBOARD
@@ -53,11 +50,11 @@ templ Index(data HomeData) {
             
             // Left: Substack Feed
             <div>
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-2xl font-bold text-gray-800">Recent Writing</h2>
-                    <a href="/substack" class="text-blue-600 hover:underline text-sm font-medium">View All &rarr;</a>
+                <div class="flex justify-between items-end mb-4 border-b-2 border-black pb-2">
+                    <h2 class="text-xl font-bold uppercase">Recent Writing</h2>
+                    <a href="/substack" class="hover:underline text-sm">[View All]</a>
                 </div>
-                <div class="space-y-4">
+                <div class="space-y-0 divide-y-2 divide-black border-b-2 border-black">
                     for _, post := range data.RecentPosts {
                         @components.PostCard(post)
                     }
@@ -66,9 +63,9 @@ templ Index(data HomeData) {
 
             // Right: Featured Projects
             <div>
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-2xl font-bold text-gray-800">Featured Projects</h2>
-                    <a href="/projects" class="text-blue-600 hover:underline text-sm font-medium">View Gallery &rarr;</a>
+                <div class="flex justify-between items-end mb-4 border-b-2 border-black pb-2">
+                    <h2 class="text-xl font-bold uppercase">Featured Projects</h2>
+                    <a href="/projects" class="hover:underline text-sm">[View Gallery]</a>
                 </div>
                 <div class="grid grid-cols-1 gap-4">
                     for _, proj := range data.FeaturedProjects {

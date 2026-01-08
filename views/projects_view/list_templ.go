@@ -47,7 +47,7 @@ func ProjectList(items []projects_store.Project) templ.Component {
 			}
 		}
 		if len(items) == 0 {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"col-span-2 text-center py-10 text-gray-500\">No projects found matching your query.</div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"col-span-2 text-center py-10 font-bold uppercase\">[ No projects found matching query ]</div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -94,7 +94,7 @@ func Page(items []projects_store.Project) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<div class=\"max-w-4xl mx-auto py-12\"><h1 class=\"text-4xl font-bold mb-2\">Projects Gallery</h1><p class=\"text-gray-600 mb-8\">Engineering systems, art, and infrastructure.</p><div class=\"mb-8\"><input type=\"text\" name=\"query\" placeholder=\"Search projects (e.g., 'Azure', 'Go')...\" class=\"w-full p-4 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none\" hx-post=\"/projects/search\" hx-trigger=\"keyup changed delay:500ms, search\" hx-target=\"#project-list\"></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<div class=\"max-w-4xl mx-auto py-12\"><h1 class=\"text-3xl font-bold mb-2 uppercase tracking-widest border-b-2 border-black pb-2 inline-block\">Projects Gallery</h1><p class=\"mb-8 mt-4 font-mono\">Index of engineering systems, art, and infrastructure.</p><div class=\"mb-8\"><input type=\"text\" name=\"query\" placeholder=\"SEARCH_INDEX...\" class=\"w-full p-4 border-2 border-black bg-white focus:outline-none focus:bg-black focus:text-white placeholder-gray-500 focus:placeholder-white font-mono uppercase\" hx-post=\"/projects/search\" hx-trigger=\"keyup changed delay:500ms, search\" hx-target=\"#project-list\"></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

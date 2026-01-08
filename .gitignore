@@ -6,7 +6,7 @@
 # --- Go Binaries ---
 # Ignore the actual compiled executable
 main
-server
+/server
 *.exe
 *.test
 
