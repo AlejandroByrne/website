@@ -55,7 +55,7 @@ func Index(data HomeData) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <section class=\"mb-12 py-10 border-b-2 border-black\"><h1 class=\"text-3xl font-bold mb-6 uppercase tracking-widest\">Alejandro Byrne</h1><div class=\"text-lg max-w-2xl leading-relaxed space-y-4\"><p>CS Senior. Texas based.</p><p>Building high-performance systems with <strong>Go, Azure, and Post-React</strong> technologies. </p></div><div class=\"mt-8 flex gap-4\"><a href=\"/projects\" class=\"border-2 border-black px-6 py-2 font-bold hover:bg-black hover:text-white transition-colors duration-0 uppercase text-sm\">View My Work</a></div></section> <div class=\"mb-16 border-b-2 border-black pb-8\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <section class=\"mb-12 py-10 border-b-2 border-black\"><h1 class=\"text-3xl font-bold mb-6 uppercase tracking-widest\">Hi, I'm Alejandro</h1><div class=\"text-lg max-w-2xl leading-relaxed space-y-4\"><p>CS Senior. Texas based.</p><p>Building high-performance systems with <strong>Go, Azure, and Post-React</strong> technologies. </p></div><div class=\"mt-8 flex gap-4\"><a href=\"/projects\" class=\"border-2 border-black px-6 py-2 font-bold hover:bg-black hover:text-white transition-colors duration-0 uppercase text-sm\">View My Work</a></div></section> <div class=\"mb-16 border-b-2 border-black pb-8\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
