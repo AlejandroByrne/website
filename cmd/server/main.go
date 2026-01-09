@@ -7,6 +7,7 @@ import (
 	"github.com/a-h/templ"
 
 	// IMPORTS
+	"github.com/alejandrobyrne/website/internal/books"
 	"github.com/alejandrobyrne/website/internal/projects_store"
 	"github.com/alejandrobyrne/website/internal/substack"
 	"github.com/alejandrobyrne/website/views/about"
@@ -42,10 +43,19 @@ func main() {
 		}
 		featuredProjects := allProjects[:limit]
 
-		// 3. Render
+		// 3. Fetch books (top 3)
+		recentBooks, err := books.FetchRecent(3)
+		if err != nil {
+			// Fail gracefully so homepage doesn't crash if Sheets is down
+			log.Println("Error fetching books:", err)
+			recentBooks = []books.Book{}
+		}
+
+		// Render
 		data := home.HomeData{
 			RecentPosts:      posts,
 			FeaturedProjects: featuredProjects,
+			RecentBooks:      recentBooks,
 		}
 		component := home.Index(data)
 		templ.Handler(component).ServeHTTP(w, r)

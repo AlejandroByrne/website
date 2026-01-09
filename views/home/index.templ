@@ -5,11 +5,13 @@ import (
 	"github.com/alejandrobyrne/website/views/components"
 	"github.com/alejandrobyrne/website/internal/substack"
 	"github.com/alejandrobyrne/website/internal/projects_store"
+    "github.com/alejandrobyrne/website/internal/books"
 )
 
 type HomeData struct {
     RecentPosts      []substack.Post
     FeaturedProjects []projects_store.Project
+    RecentBooks      []books.Book
 }
 
 templ Index(data HomeData) {
@@ -45,13 +47,18 @@ templ Index(data HomeData) {
             })
         </div>
 
-        // SECTION 2: BENTO DASHBOARD
-        <div class="grid md:grid-cols-2 gap-8">
+        // SECTION 2: VERTICAL STACK DASHBOARD
+        <div class="space-y-12">
             
-            // Left: Substack Feed
+            // Substack Feed
             <div>
                 <div class="flex justify-between items-end mb-4 border-b-2 border-black pb-2">
-                    <h2 class="text-xl font-bold uppercase">Recent Writing</h2>
+                    <div class="flex items-center gap-2">
+                        <h2 class="text-xl font-bold uppercase">Recent Writing</h2>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.539 8.242H1.46V5.405h21.079v2.837zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.079V0z"/>
+                        </svg>
+                    </div>
                     <a href="/substack" class="hover:underline text-sm">[View All]</a>
                 </div>
                 <div class="space-y-0 divide-y-2 divide-black border-b-2 border-black">
@@ -61,15 +68,29 @@ templ Index(data HomeData) {
                 </div>
             </div>
 
-            // Right: Featured Projects
+            // Featured Projects
             <div>
                 <div class="flex justify-between items-end mb-4 border-b-2 border-black pb-2">
                     <h2 class="text-xl font-bold uppercase">Featured Projects</h2>
                     <a href="/projects" class="hover:underline text-sm">[View Gallery]</a>
                 </div>
-                <div class="grid grid-cols-1 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     for _, proj := range data.FeaturedProjects {
                         @components.ProjectCard(proj)
+                    }
+                </div>
+            </div>
+
+            // Reading Log Section
+            <div>
+                <div class="flex justify-between items-end mb-4 border-b-2 border-black pb-2">
+                    <h2 class="text-xl font-bold uppercase">Reading Log</h2>
+                    <span class="text-sm font-bold uppercase">[ Recent Entries ]</span>
+                </div>
+                // Stack layout for books (one per row)
+                <div class="grid grid-cols-1 gap-4">
+                    for _, book := range data.RecentBooks {
+                        @components.BookCard(book)
                     }
                 </div>
             </div>

@@ -9,6 +9,7 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
+	"github.com/alejandrobyrne/website/internal/books"
 	"github.com/alejandrobyrne/website/internal/projects_store"
 	"github.com/alejandrobyrne/website/internal/substack"
 	"github.com/alejandrobyrne/website/views/components"
@@ -18,6 +19,7 @@ import (
 type HomeData struct {
 	RecentPosts      []substack.Post
 	FeaturedProjects []projects_store.Project
+	RecentBooks      []books.Book
 }
 
 func Index(data HomeData) templ.Component {
@@ -68,7 +70,7 @@ func Index(data HomeData) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div> <div class=\"grid md:grid-cols-2 gap-8\"><div><div class=\"flex justify-between items-end mb-4 border-b-2 border-black pb-2\"><h2 class=\"text-xl font-bold uppercase\">Recent Writing</h2><a href=\"/substack\" class=\"hover:underline text-sm\">[View All]</a></div><div class=\"space-y-0 divide-y-2 divide-black border-b-2 border-black\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div> <div class=\"space-y-12\"><div><div class=\"flex justify-between items-end mb-4 border-b-2 border-black pb-2\"><div class=\"flex items-center gap-2\"><h2 class=\"text-xl font-bold uppercase\">Recent Writing</h2><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M22.539 8.242H1.46V5.405h21.079v2.837zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.079V0z\"></path></svg></div><a href=\"/substack\" class=\"hover:underline text-sm\">[View All]</a></div><div class=\"space-y-0 divide-y-2 divide-black border-b-2 border-black\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -78,7 +80,7 @@ func Index(data HomeData) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div></div><div><div class=\"flex justify-between items-end mb-4 border-b-2 border-black pb-2\"><h2 class=\"text-xl font-bold uppercase\">Featured Projects</h2><a href=\"/projects\" class=\"hover:underline text-sm\">[View Gallery]</a></div><div class=\"grid grid-cols-1 gap-4\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div></div><div><div class=\"flex justify-between items-end mb-4 border-b-2 border-black pb-2\"><h2 class=\"text-xl font-bold uppercase\">Featured Projects</h2><a href=\"/projects\" class=\"hover:underline text-sm\">[View Gallery]</a></div><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -88,7 +90,17 @@ func Index(data HomeData) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div></div></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div></div><div><div class=\"flex justify-between items-end mb-4 border-b-2 border-black pb-2\"><h2 class=\"text-xl font-bold uppercase\">Reading Log</h2><span class=\"text-sm font-bold uppercase\">[ Recent Entries ]</span></div><div class=\"grid grid-cols-1 gap-4\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			for _, book := range data.RecentBooks {
+				templ_7745c5c3_Err = components.BookCard(book).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
