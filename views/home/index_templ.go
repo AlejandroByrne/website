@@ -70,7 +70,7 @@ func Index(data HomeData) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div> <div class=\"space-y-12\"><div><div class=\"flex justify-between items-end mb-4 border-b-2 border-black pb-2\"><div class=\"flex items-center gap-2\"><h2 class=\"text-xl font-bold uppercase\">Recent Writing</h2><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M22.539 8.242H1.46V5.405h21.079v2.837zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.079V0z\"></path></svg></div><a href=\"/substack\" class=\"hover:underline text-sm\">[View All]</a></div><div class=\"space-y-0 divide-y-2 divide-black border-b-2 border-black\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div> <div class=\"space-y-12\"><div><div class=\"flex justify-between items-end mb-4 border-b-2 border-black pb-2\"><div class=\"flex items-center gap-2\"><h2 class=\"text-xl font-bold uppercase\">Recent Writing</h2><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M22.539 8.242H1.46V5.405h21.079v2.837zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.079V0z\"></path></svg></div><a href=\"https://rubylarocca.substack.com\" target=\"_blank\" class=\"hover:underline text-sm\">[View All]</a></div><div class=\"space-y-0 divide-y-2 divide-black border-b-2 border-black\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
