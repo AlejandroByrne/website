@@ -28,7 +28,7 @@ func main() {
 		}
 
 		// 1. Fetch Substack (Top 3)
-		posts, err := substack.FetchFeed("https://rubylarocca.substack.com/feed", 3)
+		posts, err := substack.FetchFeed("https://alejandrobyrne.substack.com/feed", 3)
 		if err != nil {
 			// Fail gracefully
 			posts = []substack.Post{}
@@ -83,6 +83,11 @@ func main() {
 	http.HandleFunc("/about", func(w http.ResponseWriter, r *http.Request) {
 		component := about.Index()
 		templ.Handler(component).ServeHTTP(w, r)
+	})
+
+	// Redirect to the substack page
+	http.HandleFunc("/substack", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "https://alejandrobyrne.substack.com", http.StatusMovedPermanently)
 	})
 
 	log.Println("Server starting on http://localhost:8080")
