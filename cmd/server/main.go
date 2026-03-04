@@ -15,6 +15,8 @@ import (
 	"github.com/alejandrobyrne/website/views/about"
 	"github.com/alejandrobyrne/website/views/home"
 	"github.com/alejandrobyrne/website/views/projects_view"
+	"github.com/alejandrobyrne/website/views/now"
+	"github.com/alejandrobyrne/website/views/uses"
 )
 
 func main() {
@@ -89,6 +91,18 @@ func main() {
 	// About
 	http.HandleFunc("/about", func(w http.ResponseWriter, r *http.Request) {
 		component := about.Index()
+		templ.Handler(component).ServeHTTP(w, r)
+	})
+
+	// Now
+	http.HandleFunc("/now", func(w http.ResponseWriter, r *http.Request) {
+		component := now.Page()
+		templ.Handler(component).ServeHTTP(w, r)
+	})
+
+	// Uses
+	http.HandleFunc("/uses", func(w http.ResponseWriter, r *http.Request) {
+		component := uses.Page()
 		templ.Handler(component).ServeHTTP(w, r)
 	})
 

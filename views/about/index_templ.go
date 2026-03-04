@@ -51,7 +51,7 @@ func Index() templ.Component {
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = layout.Base("About Me | Alejandro Byrne").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = layout.Base("About Me | Alejandro Byrne", "About Alejandro Byrne — engineer, athlete, and artist.", "https://alejandrobyrne.com/about").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
