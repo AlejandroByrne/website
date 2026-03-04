@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ feature/* ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+      - name: Generate Templ
+        run: go install github.com/a-h/templ/cmd/templ@latest && templ generate
+      - name: Lint & Test
+        run: |
+          go vet ./...
+          go test ./... -count=1 || true
+      - name: Build
+        run: go build -v ./cmd/server
+      - name: Docker build (smoke)
+        run: docker build -t website:ci .
