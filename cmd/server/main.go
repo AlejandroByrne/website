@@ -97,6 +97,24 @@ func main() {
 		http.Redirect(w, r, "https://alejandrobyrne.substack.com", http.StatusMovedPermanently)
 	})
 
+	// robots.txt
+	http.HandleFunc("/robots.txt", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+		_, _ = w.Write([]byte("User-agent: *\nAllow: /\nSitemap: https://alejandrobyrne.com/sitemap.xml\n"))
+	})
+
+	// sitemap.xml (static routes for now)
+	http.HandleFunc("/sitemap.xml", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/xml; charset=utf-8")
+		sitemap := `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://alejandrobyrne.com/</loc></url>
+  <url><loc>https://alejandrobyrne.com/projects</loc></url>
+  <url><loc>https://alejandrobyrne.com/about</loc></url>
+</urlset>`
+		_, _ = w.Write([]byte(sitemap))
+	})
+
 	log.Println("Server starting on http://localhost:8080")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal(err)
