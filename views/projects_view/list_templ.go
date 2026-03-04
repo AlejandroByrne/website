@@ -108,7 +108,7 @@ func Page(items []projects_store.Project) templ.Component {
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = layout.Base("Projects | Alejandro Byrne").Render(templ.WithChildren(ctx, templ_7745c5c3_Var3), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = layout.Base("Projects | Alejandro Byrne", "Projects and experiments by Alejandro Byrne.", "https://alejandrobyrne.com/projects").Render(templ.WithChildren(ctx, templ_7745c5c3_Var3), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
