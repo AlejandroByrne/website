@@ -1,15 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-# Kill background processes when script exits
+# Prefer unified dev script
+if [[ -x "./scripts/dev.sh" ]]; then
+  exec ./scripts/dev.sh
+fi
+
+echo "scripts/dev.sh not found; falling back to legacy dev flow"
+
 trap "kill 0" EXIT
 
-# 1. Run Tailwind (Background)
-./tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch &
+# Try system tailwindcss
+if command -v tailwindcss >/dev/null 2>&1; then
+  tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch &
+else
+  echo "tailwindcss not found. Install it or run scripts/dev.sh"
+fi
 
-# 2. Run Templ (Background)
 templ generate --watch &
 
-# 3. Run Go Server (Foreground)
-# Wait a second for templ/css to generate first
 sleep 1
-go run cmd/server/main.go
+exec go run cmd/server/main.go
