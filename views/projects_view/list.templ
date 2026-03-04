@@ -22,7 +22,7 @@ templ ProjectList(items []projects_store.Project) {
 
 // 2. The Main Page Container
 templ Page(items []projects_store.Project) {
-	@layout.Base("Projects | Alejandro Byrne") {
+	@layout.Base("Projects | Alejandro Byrne", "Projects and experiments by Alejandro Byrne.", "https://alejandrobyrne.com/projects") {
 		<div class="max-w-4xl mx-auto py-12">
 			<h1 class="text-3xl font-bold mb-2 uppercase tracking-widest border-b-2 border-black pb-2 inline-block">Projects Gallery</h1>
 			<p class="mb-8 mt-4 font-mono">Index of engineering systems, art, and infrastructure.</p>
