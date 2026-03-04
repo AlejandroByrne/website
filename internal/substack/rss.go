@@ -37,3 +37,20 @@ func FetchFeed(url string, limit int) ([]Post, error) {
 	}
 	return posts, nil
 }
+
+// FetchFeedCached wraps FetchFeed with an in-memory TTL cache.
+func FetchFeedCached(c *FeedCache, url string, limit int) ([]Post, error) {
+	if c != nil {
+		if posts, ok := c.Get(url, limit); ok {
+			return posts, nil
+		}
+	}
+	posts, err := FetchFeed(url, limit)
+	if err != nil {
+		return nil, err
+	}
+	if c != nil {
+		c.Set(url, limit, posts)
+	}
+	return posts, nil
+}
