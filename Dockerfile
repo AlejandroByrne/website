@@ -1,7 +1,7 @@
 # ==========================================
 # STAGE 1: The Builder (Compiling the App)
 # ==========================================
-FROM golang:1.22-alpine AS builder
+FROM golang:1.25-alpine AS builder
 
 # 1. Install required system tools
 RUN apk add --no-cache curl git ca-certificates
