@@ -1,5 +1,9 @@
 name: Deploy to Cloud Run
 
+concurrency:
+  group: deploy-main
+  cancel-in-progress: true
+
 on:
   push:
     branches:
@@ -26,6 +30,7 @@ jobs:
       - name: Authenticate with Google Cloud
         uses: google-github-actions/auth@v2
         with:
+          # Using SA key for now; we can switch to OIDC later
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
       - name: Set up Cloud SDK
