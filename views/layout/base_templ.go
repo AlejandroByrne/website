@@ -8,7 +8,7 @@ package layout
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func Base(title string) templ.Component {
+func Base(title string, description string, canonical string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -42,7 +42,49 @@ func Base(title string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</title><link href=\"/static/css/output.css\" rel=\"stylesheet\"><script src=\"https://unpkg.com/htmx.org@1.9.10\"></script><script defer src=\"https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js\"></script></head><body class=\"bg-white text-black font-mono antialiased\"><nav class=\"border-b-2 border-black p-4\"><div class=\"max-w-4xl mx-auto flex justify-between items-end\"><a href=\"/\" class=\"block\"><img src=\"/static/images/hand_name.png\" alt=\"Alejandro Byrne\" class=\"h-12 w-auto mix-blend-multiply\"></a><div class=\"flex space-x-6\"><a href=\"/\" class=\"block\"><img src=\"/static/images/hand_home.png\" alt=\"Home\" class=\"h-10 w-auto mix-blend-multiply hover:opacity-60 transition-opacity\"></a> <a href=\"/projects\" class=\"block\"><img src=\"/static/images/hand_projects.png\" alt=\"Projects\" class=\"h-10 w-auto mix-blend-multiply hover:opacity-60 transition-opacity\"></a> <a href=\"/about\" class=\"block\"><img src=\"/static/images/hand_about.png\" alt=\"About\" class=\"h-10 w-auto mix-blend-multiply hover:opacity-60 transition-opacity\"></a></div></div></nav><main class=\"max-w-4xl mx-auto p-4 mt-8\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</title>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if description != "" {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<meta name=\"description\" content=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var3 string
+			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(description)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layout/base.templ`, Line: 11, Col: 62}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		if canonical != "" {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "<link rel=\"canonical\" href=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var4 templ.SafeURL
+			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinURLErrs(canonical)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layout/base.templ`, Line: 14, Col: 54}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "<link href=\"/static/css/output.css\" rel=\"stylesheet\"><script src=\"https://unpkg.com/htmx.org@1.9.10\"></script><script defer src=\"https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js\"></script></head><body class=\"bg-white text-black font-mono antialiased\"><a href=\"#main\" class=\"sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-black text-white px-3 py-1\">Skip to content</a><nav class=\"border-b-2 border-black p-4\" role=\"navigation\" aria-label=\"Primary\"><div class=\"max-w-4xl mx-auto flex justify-between items-end\"><a href=\"/\" class=\"block\"><img src=\"/static/images/hand_name.png\" alt=\"Alejandro Byrne\" class=\"h-12 w-auto mix-blend-multiply\"></a><div class=\"flex space-x-6\"><a href=\"/\" class=\"block\"><img src=\"/static/images/hand_home.png\" alt=\"Home\" class=\"h-10 w-auto mix-blend-multiply hover:opacity-60 transition-opacity\"></a> <a href=\"/projects\" class=\"block\"><img src=\"/static/images/hand_projects.png\" alt=\"Projects\" class=\"h-10 w-auto mix-blend-multiply hover:opacity-60 transition-opacity\"></a> <a href=\"/about\" class=\"block\"><img src=\"/static/images/hand_about.png\" alt=\"About\" class=\"h-10 w-auto mix-blend-multiply hover:opacity-60 transition-opacity\"></a></div></div></nav><main id=\"main\" class=\"max-w-4xl mx-auto p-4 mt-8\" role=\"main\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -50,7 +92,7 @@ func Base(title string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</main></body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</main></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

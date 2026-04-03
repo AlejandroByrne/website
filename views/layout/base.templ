@@ -1,18 +1,24 @@
 package layout
 
-templ Base(title string) {
+templ Base(title string, description string, canonical string) {
 	<!DOCTYPE html>
 	<html lang="en">
 		<head>
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<title>{ title }</title>
+            if description != "" {
+                <meta name="description" content={ description } />
+            }
+            if canonical != "" {
+                <link rel="canonical" href={ canonical } />
+            }
 			<link href="/static/css/output.css" rel="stylesheet"/>
 			<script src="https://unpkg.com/htmx.org@1.9.10"></script>
 			<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 		</head>
 		<body class="bg-white text-black font-mono antialiased">
-			<nav class="border-b-2 border-black p-4">
+			<nav class="border-b-2 border-black p-4" role="navigation" aria-label="Primary">
 				<div class="max-w-4xl mx-auto flex justify-between items-end">
 					<a href="/" class="block">
 						<img src="/static/images/hand_name.png" alt="Alejandro Byrne" class="h-12 w-auto mix-blend-multiply" />
@@ -31,7 +37,7 @@ templ Base(title string) {
 				</div>
 			</nav>
 
-			<main class="max-w-4xl mx-auto p-4 mt-8">
+			<main id="main" class="max-w-4xl mx-auto p-4 mt-8" role="main">
 				{ children... }
 			</main>
 		</body>
