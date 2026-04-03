@@ -36,8 +36,31 @@ func FetchProjects(query string) ([]Project, error) {
 	}
 	dataRows := records[1:]
 
+	// Prepend static projects (like ozone-processor)
+	staticProjects := []Project{
+		{
+			ID:          "ozone-processor",
+			Title:       "Ozone Processor",
+			Description: "Advanced hardware engineering project focused on an out-of-order CPU architecture with in-order semantics and precise exceptions.",
+			TechStack:   []string{"SystemVerilog", "C++", "UVM", "RTL"},
+			Link:        "https://github.com/AlejandroByrne/ozone-processor",
+		},
+	}
+
 	var results []Project
 	query = strings.ToLower(query)
+
+	for _, p := range staticProjects {
+		if query != "" {
+			match := strings.Contains(strings.ToLower(p.Title), query) ||
+				strings.Contains(strings.ToLower(p.Description), query) ||
+				strings.Contains(strings.ToLower(strings.Join(p.TechStack, " ")), query)
+			if !match {
+				continue
+			}
+		}
+		results = append(results, p)
+	}
 
 	for i, row := range dataRows {
 		// Expecting columns: Title, Desc, Topics, Url
